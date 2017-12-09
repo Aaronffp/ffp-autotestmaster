@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class AtmTblCompareInfoEntity {
     private Integer tblCompNo;
-    private long    tblCompFlag;
+    private String  tblCompFlag;
     private Integer tblCompResult;
     private String  tblCompNameEng;
     private Integer tblCompBenchmarkNo;
@@ -16,8 +16,10 @@ public class AtmTblCompareInfoEntity {
     private String  tblCompInfo;
     private String  tblCompNote;
     private Date    tblCompTime;
+    
+    public AtmTblCompareInfoEntity() {}
 
-    public AtmTblCompareInfoEntity(long tblCompFlag, Integer tblCompResult, String tblCompNameEng, Integer tblCompBenchmarkNo,
+    public AtmTblCompareInfoEntity(String tblCompFlag, Integer tblCompResult, String tblCompNameEng, Integer tblCompBenchmarkNo,
             String tblCompBenchmarkEnv, String tblCompBenchmarkUrl, Integer tblCompTargetNo, String tblCompTargetEnv,
             String tblCompTargetUrl, String tblCompInfo, String tblCompNote) {
         this.tblCompFlag = tblCompFlag;
@@ -41,11 +43,11 @@ public class AtmTblCompareInfoEntity {
         this.tblCompNo = tblCompNo;
     }
 
-    public long getTblCompFlag() {
+    public String getTblCompFlag() {
         return tblCompFlag;
     }
 
-    public void setTblCompFlag(long tblCompFlag) {
+    public void setTblCompFlag(String tblCompFlag) {
         this.tblCompFlag = tblCompFlag;
     }
 

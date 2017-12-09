@@ -26,7 +26,7 @@ public class DbMysqlService {
     private AtmDatabaseEntity dbt;
     private String message = "";
     private AtmTblCompareInfoEntity compInfo;
-    private long timestamp; 
+    private String timestamp; 
     
     private void log(String message, Integer tblCompResult){
         compInfo = new AtmTblCompareInfoEntity(timestamp, tblCompResult, dbs.getDbNameEng(), dbs.getDbNo(), dbs.getDbEnv(), dbs.getDbUrl(), dbt.getDbNo(), dbt.getDbEnv(), dbt.getDbUrl(), message, "");
@@ -35,7 +35,7 @@ public class DbMysqlService {
         System.out.println(String.format("[基准库：%s - 比对库：%s] - %s", dbs.getDbUrl(), dbt.getDbUrl(), message));
     }
 
-    public void compareAllTables(AtmDatabaseEntity dbs, AtmDatabaseEntity dbt, long timestamp) throws SQLException {
+    public void compareAllTables(AtmDatabaseEntity dbs, AtmDatabaseEntity dbt, String timestamp) throws SQLException {
         this.dbs = dbs;
         this.dbt = dbt;
         this.timestamp = timestamp;
@@ -146,6 +146,7 @@ public class DbMysqlService {
             int nullable = rs.getInt("NULLABLE");
             res.put(columnName, String.format("%s-%s-%s-%s", columnType, datasize, digits, nullable));
         }
+        
         return res;
     }
 
@@ -164,5 +165,4 @@ public class DbMysqlService {
     public void setDbt(AtmDatabaseEntity dbt) {
         this.dbt = dbt;
     }
-
 }

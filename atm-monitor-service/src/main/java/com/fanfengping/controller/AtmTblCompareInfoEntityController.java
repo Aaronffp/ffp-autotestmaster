@@ -27,14 +27,14 @@ public class AtmTblCompareInfoEntityController {
     DbMysqlService dbMysqlService;
     
     @RequestMapping(value = { "/db/compare", "/db/compare/" }, 
-            method = { RequestMethod.GET, RequestMethod.POST }, 
+            method = { RequestMethod.POST }, 
             produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public void compare() throws SQLException {
+    public String compare() throws SQLException {
         List<AtmDatabaseEntity> dbs = atmDatabaseEntityMapper.findDbBenchmark();
         
         if (dbs.size() < 1) {
-            return;
+            return "{\"result\":\"fail\"}";
         }
         
         for (int i = 0; i < dbs.size(); i++) {
@@ -49,7 +49,7 @@ public class AtmTblCompareInfoEntityController {
             for (int j = 0; j < dbt.size(); j++) {
                 AtmDatabaseEntity dt = dbt.get(j);
                 
-                long timestamp = System.currentTimeMillis();
+                String timestamp = String.valueOf(System.currentTimeMillis());
                 
                 AtmTblCompareInfoEntity atmTblCompareInfoEntity = new AtmTblCompareInfoEntity(timestamp, 0, ds.getDbNameEng(), ds.getDbNo(), ds.getDbEnv(), ds.getDbUrl(), dt.getDbNo(), dt.getDbEnv(), dt.getDbUrl(), "开始比对数据库...", "");
                 
@@ -59,6 +59,16 @@ public class AtmTblCompareInfoEntityController {
                 dbMysqlService.compareAllTables(dbs.get(i), dbt.get(j), timestamp);
             }
         }
+        
+        return "{\"result\":\"success\"}";
+    }
+    
+    @RequestMapping(value = { "/db/compare", "/db/compare/" }, 
+            method = { RequestMethod.GET }, 
+            produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<AtmTblCompareInfoEntity> findAll() throws SQLException {
+        return atmTblCompareInfoEntityMapper.findAll();
     }
 
 }

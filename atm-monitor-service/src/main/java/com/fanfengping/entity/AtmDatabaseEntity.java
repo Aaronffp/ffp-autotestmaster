@@ -155,5 +155,4 @@ public class AtmDatabaseEntity {
     public void setDbNote(String dbNote) {
         this.dbNote = dbNote;
     }
-    
 }

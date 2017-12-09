@@ -49,6 +49,35 @@ COMMENT='环境数据库信息配置表';
 ALTER TABLE `atm_database`
 ADD UNIQUE INDEX `index_atm_database` (`db_env`, `db_name_eng`) USING HASH COMMENT '环境数据库信息配置表联合主键';
 
+insert into atm_database (db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, db_creater, db_updater, db_note) 
+value ('SIT01', 'aaron-finance', '账务系统', 1, 'MYSQL', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/finance_test01', 'user_monitor', 'fanfengping123', '范丰平', '范丰平', '账务项目组使用');
+insert into atm_database (db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, db_creater, db_updater, db_note) 
+value ('SIT02', 'aaron-finance', '账务系统', 1, 'MYSQL', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/finance_test02', 'user_monitor', 'fanfengping123', '范丰平', '范丰平', '保险项目组使用');
+
+-- ----------------------------------------------------------------------
+-- Table structure for atm_table
+-- ----------------------------------------------------------------------
+DROP TABLE IF EXISTS `atm_table`;
+CREATE TABLE `atm_table` (
+    `tbl_no`  int(15) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '环境编号' ,
+    `db_no`  int(15) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '环境编号' ,
+    `db_env`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '环境标识' ,
+    `db_name_eng`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '系统英文简称' ,
+    `tbl_column_name`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '表名称' ,
+    `tbl_column_count`  int(10) NOT NULL DEFAULT 0 COMMENT '表列数' ,
+    `tbl_column_type`  varchar(15) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '环境数据库类型' ,
+    `tbl_column_driver`  varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '环境数据库驱动' ,
+    `tbl_column_url`  varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '环境数据库URL' ,
+    `tbl_column_user`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '环境数据库用户' ,
+    `tbl_column_pass`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '环境数据库密码' ,
+    `tbl_create_time`  datetime NOT NULL DEFAULT NOW() COMMENT '创建日期' ,
+    `tbl_note`  varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '备注' ,
+PRIMARY KEY (`db_no`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_unicode_ci
+COMMENT='环境数据库信息配置表';
+
 
 -- ----------------------------------------------------------------------
 -- Table structure for atm_tbl_compare_info
