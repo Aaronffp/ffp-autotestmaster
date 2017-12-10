@@ -49,10 +49,12 @@ COMMENT='环境数据库信息配置表';
 ALTER TABLE `atm_database`
 ADD UNIQUE INDEX `index_atm_database` (`db_env`, `db_name_eng`) USING HASH COMMENT '环境数据库信息配置表联合主键';
 
+/**
 insert into atm_database (db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, db_creater, db_updater, db_note) 
 value ('SIT01', 'aaron-finance', '账务系统', 1, 'MYSQL', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/finance_test01', 'user_monitor', 'fanfengping123', '范丰平', '范丰平', '账务项目组使用');
 insert into atm_database (db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, db_creater, db_updater, db_note) 
 value ('SIT02', 'aaron-finance', '账务系统', 1, 'MYSQL', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/finance_test02', 'user_monitor', 'fanfengping123', '范丰平', '范丰平', '保险项目组使用');
+*/
 
 -- ----------------------------------------------------------------------
 -- Table structure for atm_table
