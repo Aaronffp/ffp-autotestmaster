@@ -93,10 +93,10 @@ public interface AtmDatabaseEntityMapper {
     })
     List<AtmDatabaseEntity> findByDbNameEng(String dbNameEng);
     
-    @Update("update atm_database set db_env = '#{dbEnv}', db_name_eng = '#{dbNameEng}', db_name_chs = '#{dbNameChs}', "
-            + "db_benchmark = #{dbBenchmark}, db_type = '#{dbType}', db_driver = '#{dbDriver}', db_url = '#{dbUrl}', "
-            + "db_user = '#{dbUser}', db_pass = '#{dbPass}', db_updater = '#{dbUpdater}', db_update_time=NOW(), db_note = '#{dbNote}' "
-            + "where db_no = '#{dbNo}';")
+    @Update("update atm_database set db_env = #{dbEnv}, db_name_eng = #{dbNameEng}, db_name_chs = #{dbNameChs}, "
+            + "db_benchmark = #{dbBenchmark}, db_type = #{dbType}, db_driver = #{dbDriver}, db_url = #{dbUrl}, "
+            + "db_user = #{dbUser}, db_pass = #{dbPass}, db_updater = #{dbUpdater}, db_update_time=NOW(), db_note = #{dbNote} "
+            + "where db_no = #{dbNo}")
     @Results({
         @Result(property = "dbNo", column = "db_no"),
         @Result(property = "dbEnv", column = "db_env"),
@@ -116,7 +116,27 @@ public interface AtmDatabaseEntityMapper {
     })
     int update(AtmDatabaseEntity atmDatabaseEntity);
     
-    @Update("update atm_database set db_benchmark = 0 where db_name_eng = #{dbNameEng};update env_databases set db_benchmark = 1 where db_no = #{dbNo};")
+    @Update("update atm_database set db_benchmark = 0 where db_name_eng = #{dbNameEng}")
+    @Results({
+        @Result(property = "dbNo", column = "db_no"),
+        @Result(property = "dbEnv", column = "db_env"),
+        @Result(property = "dbNameEng", column = "db_name_eng"),
+        @Result(property = "dbNameChs", column = "db_name_chs"),
+        @Result(property = "dbBenchmark", column = "db_benchmark"),
+        @Result(property = "dbType", column = "db_type"),
+        @Result(property = "dbDriver", column = "db_driver"),
+        @Result(property = "dbUrl", column = "db_url"),
+        @Result(property = "dbUser", column = "db_user"),
+        @Result(property = "dbPass", column = "db_pass"),
+        @Result(property = "dbCreater", column = "db_creater"),
+        @Result(property = "dbCreateTime", column = "db_create_time"),
+        @Result(property = "dbUpdater", column = "db_updater"),
+        @Result(property = "dbUpdateTime", column = "db_update_time"),
+        @Result(property = "dbNote", column = "db_note"),
+    })
+    int setBenchmarkFalse(AtmDatabaseEntity atmDatabaseEntity);
+    
+    @Update("update atm_database set db_benchmark = 1 where db_no = #{dbNo};")
     @Results({
         @Result(property = "dbNo", column = "db_no"),
         @Result(property = "dbEnv", column = "db_env"),
@@ -136,7 +156,7 @@ public interface AtmDatabaseEntityMapper {
     })
     int setBenchmark(AtmDatabaseEntity atmDatabaseEntity);
     
-    @Delete("delete from env_databases where db_no = #{dbNo}")
+    @Delete("delete from atm_database where db_no = #{dbNo}")
     @Results({
         @Result(property = "dbNo", column = "db_no"),
         @Result(property = "dbEnv", column = "db_env"),
