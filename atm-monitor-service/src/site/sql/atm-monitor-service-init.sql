@@ -105,6 +105,29 @@ ENGINE=InnoDB
 DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_unicode_ci
 COMMENT='数据库表比对结果表';
 
+-- ----------------------------------------------------------------------
+-- Table structure for atm_jenkins_build_history
+-- ----------------------------------------------------------------------
+DROP TABLE IF EXISTS `atm_jenkins_build_history`;
+CREATE TABLE `atm_jenkins_build_history` (
+`id`  integer(15) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '系统ID' ,
+`build_env`  varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '环境' ,
+`build_server`  varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '服务器' ,
+`build_service`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '产品服务' ,
+`build_deployer`  varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '部署人' ,
+`build_version`  varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '版本标识' ,
+`build_status`  integer(15) NOT NULL DEFAULT 0 COMMENT '版本状态（1，发布版本；0，测试版本；-1，开发版本）' ,
+`build_git_url`  varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT 'GIT链接' ,
+`build_git_branch`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '构建分支' ,
+`build_jenkins_link`  varchar(150) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT 'Jenkins构建链接' ,
+`build_time`  datetime NOT NULL DEFAULT NOW() COMMENT '构建时间' ,
+PRIMARY KEY (`id`),
+INDEX `index_jenkins_build_history` (`build_env`, `build_server`, `build_service`, `build_deployer`, `build_status`) USING BTREE COMMENT '索引'
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_unicode_ci
+COMMENT='构建历史记录表'
+ROW_FORMAT=DEFAULT;
 
 
 
