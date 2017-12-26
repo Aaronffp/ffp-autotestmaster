@@ -129,5 +129,28 @@ DEFAULT CHARACTER SET=utf8 COLLATE=utf8_unicode_ci
 COMMENT='构建历史记录表'
 ROW_FORMAT=DEFAULT;
 
+-- ----------------------------
+-- Table structure for atm_deploy_service_info
+-- ----------------------------
+DROP TABLE IF EXISTS `atm_deploy_service_info`;
+CREATE TABLE `atm_deploy_service_info` (
+    `no`  int(15) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '系统编号' ,
+    `env`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '环境标识' ,
+    `service_name_eng`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '英文简称' ,
+    `service_name_chs`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '中文名称' ,
+    `service_url`  varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '访问链接' ,
+    `service_user`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '用户' ,
+    `service_pass`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '密码' ,
+    `service_updater`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '更新人' ,
+    `service_update_time`  datetime NOT NULL DEFAULT NOW() COMMENT '更新时间' ,
+    `service_note`  varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT '' COMMENT '备注' ,
+PRIMARY KEY (`no`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_unicode_ci
+COMMENT='服务信息管理';
+
+ALTER TABLE `atm_deploy_service_info`
+ADD UNIQUE INDEX `index_atm_deploy_service_info` (`env`, `service_name_eng`) USING HASH COMMENT '服务信息管理联合主键';
 
 
