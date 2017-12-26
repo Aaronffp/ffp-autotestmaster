@@ -46,6 +46,9 @@ public class AtmTblCompareInfoEntityController {
                 continue;
             }
             
+            // 清空比对结果信息
+            atmTblCompareInfoEntityMapper.clean();
+            
             for (int j = 0; j < dbt.size(); j++) {
                 AtmDatabaseEntity dt = dbt.get(j);
                 
@@ -57,6 +60,7 @@ public class AtmTblCompareInfoEntityController {
                 System.out.println(String.format("[基准库：%s - 比对库：%s] - 开始比对数据库...", dbs.get(i).getDbUrl(), dbt.get(j).getDbUrl()));
                 
                 dbMysqlService.compareAllTables(dbs.get(i), dbt.get(j), timestamp);
+                System.out.println(String.format("[基准库：%s - 比对库：%s] - 结束比对数据库...", dbs.get(i).getDbUrl(), dbt.get(j).getDbUrl()));
             }
         }
         
