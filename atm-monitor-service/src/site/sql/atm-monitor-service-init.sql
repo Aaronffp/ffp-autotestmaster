@@ -153,4 +153,37 @@ COMMENT='服务信息管理';
 ALTER TABLE `atm_deploy_service_info`
 ADD UNIQUE INDEX `index_atm_deploy_service_info` (`env`, `service_name_eng`) USING HASH COMMENT '服务信息管理联合主键';
 
+-- ------------------------------------------------
+-- Table structure for atm_service_basic_config
+-- ------------------------------------------------
+DROP TABLE IF EXISTS `atm_service_basic_config`;
+CREATE TABLE `atm_service_basic_config` (
+    `no`  int(15) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '系统编号' ,
+    `service_name_eng`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '英文简称' ,
+    `service_name_chs`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '中文简称' ,
+    `service_type`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '服务类型 ' ,
+    `service_port`  int(15) UNSIGNED NOT NULL DEFAULT 20880 COMMENT '服务端口' ,
+    `service_port_dubbo`  int(15) UNSIGNED NOT NULL DEFAULT 28080 COMMENT '微服务端口' ,
+    `service_context`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '部署名称' ,
+    `service_path_deploy`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '部署路径' ,
+    `service_path_log`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '日志路径' ,
+    `service_path_data`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '数据路径' ,
+    `service_path_temp`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '临时路径' ,
+    `service_manager`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '管理员' ,
+    `service_note`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '备注' ,
+    `service_update_time`  varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '更新时间' ,
+PRIMARY KEY (`no`)
+)
+ENGINE=InnoDB
+-- AUTO_INCREMENT=8080
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_unicode_ci
+COMMENT='服务定义管理';
+
+ALTER TABLE `atm_service_basic_config`
+ADD UNIQUE INDEX `index_atm_service_basic_config` (`service_name_eng`) USING HASH COMMENT '服务信息管理联合主键';
+
+
+
+
+
 
