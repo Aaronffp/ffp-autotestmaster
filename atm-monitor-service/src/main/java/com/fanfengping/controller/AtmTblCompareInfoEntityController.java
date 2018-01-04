@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -71,8 +72,8 @@ public class AtmTblCompareInfoEntityController {
             method = { RequestMethod.GET }, 
             produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public List<AtmTblCompareInfoEntity> findAll() throws SQLException {
-        return atmTblCompareInfoEntityMapper.findAll();
+    public List<AtmTblCompareInfoEntity> search(@RequestParam("eng") String eng, @RequestParam("status") String status, @RequestParam("env") String env) throws SQLException {
+        return atmTblCompareInfoEntityMapper.search(eng, status, env);
     }
 
 }
