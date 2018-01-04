@@ -45,7 +45,6 @@ public class AtmJenkinsBuildHistoryController {
             produces = "application/json; charset=UTF-8")
     @ResponseBody
     public List<AtmJenkinsBuildHistory> search(@RequestParam("env") String env, @RequestParam("server") String server, @RequestParam("service") String service, @RequestParam("deployer") String deployer, @RequestParam("status") String status) throws SQLException {
-        System.out.println(String.format("env:%s -- server:%s -- service:%s -- exec:%s -- ver:%s", env, server, service, deployer, status));
         if (Integer.parseInt(status) == -1) {
             return atmJenkinsBuildHistoryMapper.searchAllVersion(env, server, service, deployer, Integer.parseInt(status));
         } else {
