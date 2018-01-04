@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -12,8 +13,10 @@ import org.apache.ibatis.annotations.Update;
 import com.fanfengping.entity.AtmDatabaseEntity;
 
 public interface AtmDatabaseEntityMapper {
-    @Insert("insert into atm_database (db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, db_creater, db_updater, db_note) "
-            + "value (#{dbEnv}, #{dbNameEng}, #{dbNameChs}, #{dbBenchmark}, #{dbType}, #{dbDriver}, #{dbUrl}, #{dbUser}, #{dbPass}, #{dbCreater}, #{dbUpdater}, #{dbNote})")
+    @Insert("insert into atm_database (db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, "
+            + "                        db_user, db_pass, db_creater, db_updater, db_note) "
+            + "value (#{dbEnv}, #{dbNameEng}, #{dbNameChs}, #{dbBenchmark}, #{dbType}, #{dbDriver}, #{dbUrl}, "
+            + "       #{dbUser}, #{dbPass}, #{dbCreater}, #{dbUpdater}, #{dbNote})")
     @Results({
 //      @Result(property = "dbNo", column = "db_no"),
         @Result(property = "dbEnv", column = "db_env"),
@@ -33,7 +36,12 @@ public interface AtmDatabaseEntityMapper {
     })
     Integer add(AtmDatabaseEntity atmDatabaseEntity);
     
-    @Select("select * from atm_database order by db_update_time desc")
+    @Select("select db_no, db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, "
+            + "     db_creater, db_create_time, db_updater, db_update_time, db_note "
+            + "from atm_database "
+            + "where db_env like '%${env}%' and db_name_eng like '%${eng}%' "
+            + "  and db_name_chs like '%${chs}%' and db_benchmark like '%${benchmark}%' "
+            + "order by db_update_time desc")
     @Results({
         @Result(property = "dbNo", column = "db_no"),
         @Result(property = "dbEnv", column = "db_env"),
@@ -51,9 +59,12 @@ public interface AtmDatabaseEntityMapper {
         @Result(property = "dbUpdateTime", column = "db_update_time"),
         @Result(property = "dbNote", column = "db_note"),
     })
-    List<AtmDatabaseEntity> findAll();
+    List<AtmDatabaseEntity> search(@Param("env") String env, @Param("eng") String eng, @Param("chs") String chs, @Param("benchmark") String benchmark);
     
-    @Select("select * from atm_database where db_benchmark = 1")
+    @Select("select db_no, db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, "
+            + "     db_creater, db_create_time, db_updater, db_update_time, db_note "
+            + "from atm_database "
+            + "where db_benchmark = 1")
     @Results({
         @Result(property = "dbNo", column = "db_no"),
         @Result(property = "dbEnv", column = "db_env"),
@@ -73,7 +84,10 @@ public interface AtmDatabaseEntityMapper {
     })
     List<AtmDatabaseEntity> findDbBenchmark();
 
-    @Select("select * from atm_database where db_name_eng = #{dbNameEng} and db_benchmark = 0")
+    @Select("select db_no, db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, "
+            + "     db_creater, db_create_time, db_updater, db_update_time, db_note "
+            + "from atm_database "
+            + "where db_name_eng = #{dbNameEng} and db_benchmark = 0")
     @Results({
         @Result(property = "dbNo", column = "db_no"),
         @Result(property = "dbEnv", column = "db_env"),

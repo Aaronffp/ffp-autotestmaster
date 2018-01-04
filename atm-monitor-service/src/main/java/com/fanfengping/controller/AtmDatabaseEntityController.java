@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -57,8 +58,8 @@ public class AtmDatabaseEntityController {
             method = { RequestMethod.GET }, 
             produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public List<AtmDatabaseEntity> findAll() {
-        List<AtmDatabaseEntity> databases = atmDatabaseEntityMapper.findAll();
+    public List<AtmDatabaseEntity> search(@RequestParam("env") String env, @RequestParam("eng") String eng, @RequestParam("chs") String chs, @RequestParam("benchmark") String benchmark) {
+        List<AtmDatabaseEntity> databases = atmDatabaseEntityMapper.search(env, eng, chs, benchmark);
 
         return databases;
     }
