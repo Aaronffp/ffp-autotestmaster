@@ -39,6 +39,14 @@ public class AtmJenkinsBuildHistoryController {
             return -1;
         }
     }
+    
+    @RequestMapping(value = { "/build/release", "/build/release/" }, 
+            method = { RequestMethod.GET }, 
+            produces = "application/json; charset=UTF-8")
+    @ResponseBody
+    public List<AtmJenkinsBuildHistory> searchRelease(@RequestParam("env") String env, @RequestParam("service") String service) throws SQLException {
+        return atmJenkinsBuildHistoryMapper.searchRelease(env, service);
+    }
 
     @RequestMapping(value = { "/build", "/build/" }, 
             method = { RequestMethod.GET }, 
