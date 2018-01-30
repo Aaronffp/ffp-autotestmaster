@@ -182,6 +182,14 @@ COMMENT='服务定义管理';
 ALTER TABLE `atm_service_basic_config`
 ADD UNIQUE INDEX `index_atm_service_basic_config` (`service_name_eng`) USING HASH COMMENT '服务信息管理联合主键';
 
+ALTER TABLE `atm_monitor`.`atm_service_basic_config` 
+DROP COLUMN `service_path_data`,
+DROP COLUMN `service_port_dubbo`,
+CHANGE COLUMN `service_path_log` `service_git_url` VARCHAR(50) CHARACTER SET 'utf8' NOT NULL DEFAULT '' COMMENT '源码库连接' AFTER `service_port`,
+CHANGE COLUMN `service_path_temp` `service_aggregate_home` VARCHAR(50) CHARACTER SET 'utf8' NOT NULL DEFAULT '' COMMENT 'POM聚合目录' AFTER `service_git_url`,
+CHANGE COLUMN `service_port` `service_port` INT(15) UNSIGNED NOT NULL DEFAULT '20880' COMMENT '服务监听端口' ,
+CHANGE COLUMN `service_context` `service_war_name` VARCHAR(50) CHARACTER SET 'utf8' NOT NULL DEFAULT '' COMMENT 'war包名称' ,
+CHANGE COLUMN `service_path_deploy` `service_war_file` VARCHAR(50) CHARACTER SET 'utf8' NOT NULL DEFAULT '' COMMENT 'war包路径' ;
 
 
 
