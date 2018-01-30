@@ -32,11 +32,10 @@ public class AtmServiceBasicConfigController {
         serviceBasicConfig.setServiceNameChs(reqMap.get("chs").toString());
         serviceBasicConfig.setServiceType(reqMap.get("type").toString());
         serviceBasicConfig.setServicePort(Integer.parseInt(reqMap.get("port").toString()));
-        serviceBasicConfig.setServiceContext(reqMap.get("context").toString());
-        serviceBasicConfig.setServicePathDeploy(reqMap.get("deployPath").toString());
-        serviceBasicConfig.setServicePathLog(reqMap.get("logPath").toString());
-        serviceBasicConfig.setServicePathData(reqMap.get("dataPath").toString());
-        serviceBasicConfig.setServicePathTemp(reqMap.get("tempPath").toString());
+        serviceBasicConfig.setServiceGitUrl(reqMap.get("gitUrl").toString());
+        serviceBasicConfig.setServiceAggregateHome(reqMap.get("aggregateHome").toString());
+        serviceBasicConfig.setServiceWarName(reqMap.get("warName").toString());
+        serviceBasicConfig.setServiceWarFile(reqMap.get("warFile").toString());
         serviceBasicConfig.setServiceManager(reqMap.get("manager").toString());
         serviceBasicConfig.setServiceNote(reqMap.get("note").toString());
         
@@ -60,11 +59,10 @@ public class AtmServiceBasicConfigController {
         serviceBasicConfig.setServiceNameChs(reqMap.get("chs").toString());
         serviceBasicConfig.setServiceType(reqMap.get("type").toString());
         serviceBasicConfig.setServicePort(Integer.parseInt(reqMap.get("port").toString()));
-        serviceBasicConfig.setServiceContext(reqMap.get("context").toString());
-        serviceBasicConfig.setServicePathDeploy(reqMap.get("deployPath").toString());
-        serviceBasicConfig.setServicePathLog(reqMap.get("logPath").toString());
-        serviceBasicConfig.setServicePathData(reqMap.get("dataPath").toString());
-        serviceBasicConfig.setServicePathTemp(reqMap.get("tempPath").toString());
+        serviceBasicConfig.setServiceGitUrl(reqMap.get("gitUrl").toString());
+        serviceBasicConfig.setServiceAggregateHome(reqMap.get("aggregateHome").toString());
+        serviceBasicConfig.setServiceWarName(reqMap.get("warName").toString());
+        serviceBasicConfig.setServiceWarFile(reqMap.get("warFile").toString());
         serviceBasicConfig.setServiceManager(reqMap.get("manager").toString());
         serviceBasicConfig.setServiceNote(reqMap.get("note").toString());
         serviceBasicConfig.setServiceUpdateTime(reqMap.get("updateTime").toString());
@@ -95,11 +93,10 @@ public class AtmServiceBasicConfigController {
         serviceBasicConfig.setServiceNameChs(reqMap.get("chs").toString());
         serviceBasicConfig.setServiceType(reqMap.get("type").toString());
         serviceBasicConfig.setServicePort(Integer.parseInt(reqMap.get("port").toString()));
-        serviceBasicConfig.setServiceContext(reqMap.get("context").toString());
-        serviceBasicConfig.setServicePathDeploy(reqMap.get("deployPath").toString());
-        serviceBasicConfig.setServicePathLog(reqMap.get("logPath").toString());
-        serviceBasicConfig.setServicePathData(reqMap.get("dataPath").toString());
-        serviceBasicConfig.setServicePathTemp(reqMap.get("tempPath").toString());
+        serviceBasicConfig.setServiceGitUrl(reqMap.get("gitUrl").toString());
+        serviceBasicConfig.setServiceAggregateHome(reqMap.get("aggregateHome").toString());
+        serviceBasicConfig.setServiceWarName(reqMap.get("warName").toString());
+        serviceBasicConfig.setServiceWarFile(reqMap.get("warFile").toString());
         serviceBasicConfig.setServiceManager(reqMap.get("manager").toString());
         serviceBasicConfig.setServiceNote(reqMap.get("note").toString());
         

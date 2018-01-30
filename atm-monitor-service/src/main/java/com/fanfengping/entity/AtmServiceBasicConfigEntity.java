@@ -6,12 +6,10 @@ public class AtmServiceBasicConfigEntity {
     private String  serviceNameChs;
     private String  serviceType;
     private Integer servicePort;
-    private Integer servicePortDubbo;
-    private String  serviceContext;
-    private String  servicePathDeploy;
-    private String  servicePathLog;
-    private String  servicePathData;
-    private String  servicePathTemp;
+    private String serviceGitUrl;
+    private String  serviceAggregateHome;
+    private String  serviceWarName;
+    private String  serviceWarFile;
     private String  serviceManager;
     private String  serviceNote;
     private String  serviceUpdateTime;
@@ -19,19 +17,17 @@ public class AtmServiceBasicConfigEntity {
     public AtmServiceBasicConfigEntity() {
     }
 
-    public AtmServiceBasicConfigEntity(String serviceNameEng, String serviceNameChs, String serviceType, Integer servicePort, String serviceContext,
-                                       String servicePathDeploy, String servicePathLog, String servicePathData, String servicePathTemp,
-                                       String serviceManager, String serviceNote) {
+    public AtmServiceBasicConfigEntity(String serviceNameEng, String serviceNameChs, String serviceType, Integer servicePort, String serviceGitUrl,
+                                       String serviceAggregateHome, String serviceWarName, String serviceWarFile, String serviceManager,
+                                       String serviceNote) {
         this.serviceNameEng = serviceNameEng;
         this.serviceNameChs = serviceNameChs;
         this.serviceType = serviceType;
         this.servicePort = servicePort;
-        this.servicePortDubbo = servicePort + 20000;
-        this.serviceContext = serviceContext;
-        this.servicePathDeploy = servicePathDeploy;
-        this.servicePathLog = servicePathLog;
-        this.servicePathData = servicePathData;
-        this.servicePathTemp = servicePathTemp;
+        this.serviceGitUrl = serviceGitUrl;
+        this.serviceAggregateHome = serviceAggregateHome;
+        this.serviceWarName = serviceWarName;
+        this.serviceWarFile = serviceWarFile;
         this.serviceManager = serviceManager;
         this.serviceNote = serviceNote;
     }
@@ -74,55 +70,38 @@ public class AtmServiceBasicConfigEntity {
 
     public void setServicePort(Integer servicePort) {
         this.servicePort = servicePort;
-        this.servicePortDubbo = servicePort + 20000;
     }
 
-    public Integer getServicePortDubbo() {
-        return servicePortDubbo;
+    public String getServiceGitUrl() {
+        return serviceGitUrl;
     }
 
-    public void setServicePortDubbo(Integer servicePortDubbo) {
-        this.servicePortDubbo = servicePortDubbo;
+    public void setServiceGitUrl(String serviceGitUrl) {
+        this.serviceGitUrl = serviceGitUrl;
     }
 
-    public String getServiceContext() {
-        return serviceContext;
+    public String getServiceAggregateHome() {
+        return serviceAggregateHome;
     }
 
-    public void setServiceContext(String serviceContext) {
-        this.serviceContext = serviceContext;
+    public void setServiceAggregateHome(String serviceAggregateHome) {
+        this.serviceAggregateHome = serviceAggregateHome;
     }
 
-    public String getServicePathDeploy() {
-        return servicePathDeploy;
+    public String getServiceWarName() {
+        return serviceWarName;
     }
 
-    public void setServicePathDeploy(String servicePathDeploy) {
-        this.servicePathDeploy = servicePathDeploy;
+    public void setServiceWarName(String serviceWarName) {
+        this.serviceWarName = serviceWarName;
     }
 
-    public String getServicePathLog() {
-        return servicePathLog;
+    public String getServiceWarFile() {
+        return serviceWarFile;
     }
 
-    public void setServicePathLog(String servicePathLog) {
-        this.servicePathLog = servicePathLog;
-    }
-
-    public String getServicePathData() {
-        return servicePathData;
-    }
-
-    public void setServicePathData(String servicePathData) {
-        this.servicePathData = servicePathData;
-    }
-
-    public String getServicePathTemp() {
-        return servicePathTemp;
-    }
-
-    public void setServicePathTemp(String servicePathTemp) {
-        this.servicePathTemp = servicePathTemp;
+    public void setServiceWarFile(String serviceWarFile) {
+        this.serviceWarFile = serviceWarFile;
     }
 
     public String getServiceManager() {
