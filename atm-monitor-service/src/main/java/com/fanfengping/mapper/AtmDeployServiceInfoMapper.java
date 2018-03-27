@@ -44,7 +44,7 @@ public interface AtmDeployServiceInfoMapper {
     })
     int delete(AtmDeployServiceInfoEntity serviceInfo);
     
-    @Select("select no, env, service_name_eng, service_name_chs, service_url, service_user, '******' service_pass, "
+    @Select("select no, env, service_name_eng, service_name_chs, service_url, service_user, service_pass, "
             + "service_updater, service_update_time, service_note  "
             + "from atm_deploy_service_info order by no desc")
     @Results({
