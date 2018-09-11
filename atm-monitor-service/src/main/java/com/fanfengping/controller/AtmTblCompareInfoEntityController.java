@@ -2,8 +2,10 @@ package com.fanfengping.controller;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,11 +33,12 @@ public class AtmTblCompareInfoEntityController {
             method = { RequestMethod.POST }, 
             produces = "application/json; charset=UTF-8")
     @ResponseBody
-    public String compare() throws SQLException {
-        List<AtmDatabaseEntity> dbs = atmDatabaseEntityMapper.findDbBenchmark();
+    public String compare(@RequestBody Map<String,Object> reqMap) throws SQLException {
+        String service = reqMap.get("eng").toString();
+        List<AtmDatabaseEntity> dbs = atmDatabaseEntityMapper.findDbBenchmark(service);
         
         if (dbs.size() < 1) {
-            return "{\"result\":\"fail\"}";
+            return "{\"code\":200200, \"status\":\"ok\", \"message\":\"未发现需要比对的基准库，请确认！\"}";
         }
         
         for (int i = 0; i < dbs.size(); i++) {
@@ -48,7 +51,7 @@ public class AtmTblCompareInfoEntityController {
             }
             
             // 清空比对结果信息
-            atmTblCompareInfoEntityMapper.clean();
+            atmTblCompareInfoEntityMapper.clean(service);
             
             for (int j = 0; j < dbt.size(); j++) {
                 AtmDatabaseEntity dt = dbt.get(j);
@@ -65,7 +68,7 @@ public class AtmTblCompareInfoEntityController {
             }
         }
         
-        return "{\"result\":\"success\"}";
+        return "{\"code\":200200, \"status\":\"ok\", \"message\":\"数据库比对完成，敬请查询！\"}";
     }
     
     @RequestMapping(value = { "/db/compare", "/db/compare/" }, 

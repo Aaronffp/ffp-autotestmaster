@@ -55,7 +55,7 @@ public interface AtmTblCompareInfoEntityMapper {
     })
     List<AtmTblCompareInfoEntity> search(@Param("eng") String eng, @Param("status") String status, @Param("env") String env);
     
-    @Delete("delete from env_tbl_compare_info")
+    @Delete("delete from atm_tbl_compare_info where tbl_comp_name_eng like '%${service}%'")
     @Results({ 
         @Result(property = "tblCompNo", column = "tbl_comp_no"), 
         @Result(property = "tblCompFlag", column = "tbl_comp_flag"),
@@ -71,6 +71,6 @@ public interface AtmTblCompareInfoEntityMapper {
         @Result(property = "tblCompNote", column = "tbl_comp_note"), 
         @Result(property = "tblCompTime", column = "tbl_comp_time"), 
     })
-    Integer clean();
+    Integer clean(String service);
 
 }

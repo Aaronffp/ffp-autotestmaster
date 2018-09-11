@@ -64,15 +64,15 @@ public class AtmDatabaseEntityController {
         return databases;
     }
     
-    @RequestMapping(value = { "/db/benchmark", "/db/benchmark/" }, 
-            method = { RequestMethod.GET }, 
-            produces = "application/json; charset=UTF-8")
-    @ResponseBody
-    public List<AtmDatabaseEntity> findDbBenchmark() {
-        List<AtmDatabaseEntity> databases = atmDatabaseEntityMapper.findDbBenchmark();
-
-        return databases;
-    }
+//    @RequestMapping(value = { "/db/benchmark", "/db/benchmark/" }, 
+//            method = { RequestMethod.GET }, 
+//            produces = "application/json; charset=UTF-8")
+//    @ResponseBody
+//    public List<AtmDatabaseEntity> findDbBenchmark() {
+//        List<AtmDatabaseEntity> databases = atmDatabaseEntityMapper.findDbBenchmark("");
+//
+//        return databases;
+//    }
     
     @RequestMapping(value = { "/db", "/db/" }, 
             method = { RequestMethod.PUT }, 

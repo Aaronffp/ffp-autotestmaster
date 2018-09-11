@@ -115,7 +115,7 @@ public class DbMysqlService {
                 for (Map.Entry<String, String> entry : dbsTable.entrySet()) {
                     if (dbtTable.containsKey(entry.getKey())) {
                         if (!dbtTable.get(entry.getKey()).equals(entry.getValue())) {
-                            message = String.format("比对库表[%s]字段[%s]基本设置不一致。[%s - %s]", tableName, entry.getKey(), entry.getValue(), dbtTable.get(entry.getKey()));
+                            message = String.format("比对库表[%s]字段[%s]基本设置不一致。[%s >>>>>> %s]", tableName, entry.getKey(), entry.getValue(), dbtTable.get(entry.getKey()));
                             log(message, -1);
                         }
                     } else {

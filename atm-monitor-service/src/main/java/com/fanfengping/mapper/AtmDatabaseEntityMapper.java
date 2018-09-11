@@ -64,7 +64,7 @@ public interface AtmDatabaseEntityMapper {
     @Select("select db_no, db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, "
             + "     db_creater, db_create_time, db_updater, db_update_time, db_note "
             + "from atm_database "
-            + "where db_benchmark = 1")
+            + "where db_benchmark = 1 and db_name_eng like '%${eng}%'")
     @Results({
         @Result(property = "dbNo", column = "db_no"),
         @Result(property = "dbEnv", column = "db_env"),
@@ -82,7 +82,7 @@ public interface AtmDatabaseEntityMapper {
         @Result(property = "dbUpdateTime", column = "db_update_time"),
         @Result(property = "dbNote", column = "db_note"),
     })
-    List<AtmDatabaseEntity> findDbBenchmark();
+    List<AtmDatabaseEntity> findDbBenchmark(String eng);
 
     @Select("select db_no, db_env, db_name_eng, db_name_chs, db_benchmark, db_type, db_driver, db_url, db_user, db_pass, "
             + "     db_creater, db_create_time, db_updater, db_update_time, db_note "
